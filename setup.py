@@ -96,6 +96,7 @@ setup(
       'sphinx_rtd_theme', 
       'psutil', 
       'matplotlib',
+            'h5py',
       'numpy',
       'scipy',
 #       'proper',

@@ -72,12 +72,12 @@ def prop_psd_errormap(wf, amp, b, c, **kwargs):
     TPF : bool
         Indicates that the TPF 2D PSD shape is to be used:
 
-         .. math:: PSD\_2D(k) = \\frac{amp}{1 + (\\frac{k}{b})^c}
+         .. math:: PSD\\_2D(k) = \\frac{amp}{1 + (\\frac{k}{b})^c}
 
         where k and b are in cycles/meter. The default PSD shape is used if
         TPF is not specified:
 
-         .. math::  PSD\_2D(k) = \\frac{amp}{(1 + (\\frac{k}{b})^2)^{(c+1)/2}}
+         .. math::  PSD\\_2D(k) = \\frac{amp}{(1 + (\\frac{k}{b})^2)^{(c+1)/2}}
 
 
         This is the K-correlation form (see Church et al., Proc. of the SPIE,

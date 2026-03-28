@@ -7,6 +7,7 @@ import pickle
 import matplotlib.pyplot as plt
 
 import falco
+from falco.hdf5utils import save_object_to_hdf5
 
 
 def loop(mp, out):
@@ -163,11 +164,10 @@ def loop(mp, out):
         else:
             print('Previous Measured NI:\t\t\t %.2e ' % (out.InormHist[Itr]))
 
-        # Save just the 'out' object to a pickle file
-        fnSnippet = os.path.join(mp.path.brief, (mp.runLabel + '_snippet.pkl'))
+        # Save just the 'out' object to an HDF5 file.
+        fnSnippet = os.path.join(mp.path.brief, (mp.runLabel + '_snippet.h5'))
         print('Saving data snippet to:\n\t%s  ...' % (fnSnippet), end='')
-        with open(fnSnippet, 'wb') as f:
-            pickle.dump(out, f)
+        save_object_to_hdf5(out, fnSnippet)
         print('done.', end='\n\n')
 
         # END OF ESTIMATION + CONTROL LOOP
@@ -189,11 +189,10 @@ def loop(mp, out):
         ev.Im = cvar.Im
         # plot_progress(mp, out, Itr, ImSimOffaxis, cvar.Im)
 
-    # Save just the 'out' object to a pickle file
-    fnSnippet = os.path.join(mp.path.brief, (mp.runLabel + '_snippet.pkl'))
+    # Save just the 'out' object to an HDF5 file.
+    fnSnippet = os.path.join(mp.path.brief, (mp.runLabel + '_snippet.h5'))
     print('\nSaving data snippet to:\n\t%s...' % (fnSnippet), end='')
-    with open(fnSnippet, 'wb') as f:
-        pickle.dump(out, f)
+    save_object_to_hdf5(out, fnSnippet)
     print('done.\n')
 
     # Save out the data from the workspace

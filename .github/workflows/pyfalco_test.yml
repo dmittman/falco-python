@@ -38,6 +38,7 @@ jobs:
         pip install pytest-html
         pip install numpy
         pip install scipy
+        pip install h5py
         pip install psutil
         pip install matplotlib
         pip install coveralls

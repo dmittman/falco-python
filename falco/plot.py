@@ -308,7 +308,7 @@ def pairwise_probes(mp, ev, dDMVplus, ampSq2Dcube, iSubband):
         cmaps = Ncols*['gray']
         cmaps[0] = 'viridis'
         titles = ['DM Command (nm)', '+Probe Image', '-Probe Image',
-                  'Probe Intensity, $|\Delta p|^2$']
+              'Probe Intensity, $|\\Delta p|^2$']
 
         plusImageCube = ev.imageArray[:, :, 1::2, iSubband]
         minusImageCube = ev.imageArray[:, :, 2::2, iSubband]

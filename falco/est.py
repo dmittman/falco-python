@@ -611,7 +611,7 @@ def pairwise_probing(mp, ev, jacStruct=np.array([])):
                         # If <2 probe pairs had good measurements, can't do pinv. Leave Eest as zero.
                         if NpairsGood < 2:
                             zerosCounter = zerosCounter + 1
-                            Epix = np.zeros((2, 1))
+                            Epix = np.zeros(2)
                             zerosCounter += 1
 
                         # Otherwise, use the 2+ good probe pair measurements for that pixel

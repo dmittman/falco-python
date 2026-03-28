@@ -5,6 +5,7 @@ import os
 from math import isclose
 
 import falco
+import falco.hdf5utils as hdf5utils
 
 import config_wfsc_flc as CONFIG
 
@@ -22,6 +23,9 @@ def test_wfsc_flc():
     # Perform the Wavefront Sensing and Control
     out = falco.setup.flesh_out_workspace(mp)
     falco.wfsc.loop(mp, out)
+
+    fn_hdf5 = os.path.join(mp.path.brief, f"{mp.runLabel}_snippet.h5")
+    out_from_hdf5 = hdf5utils.load_object_from_hdf5(fn_hdf5)
 
     print(out.IrawCorrHist[-1])
     print(out.IestScoreHist[-1])
@@ -51,6 +55,8 @@ def test_wfsc_flc():
     assert isclose(thput, 0.1486, abs_tol=1e-3)
 
     assert np.allclose(out.log10regHist, np.array([-2, -2, -2]), rtol=1e-2)
+    assert np.allclose(out_from_hdf5.log10regHist, out.log10regHist, rtol=1e-12)
+    assert isclose(out_from_hdf5.IrawCorrHist[-1], out.IrawCorrHist[-1], abs_tol=1e-14)
 
 
 if __name__ == '__main__':
